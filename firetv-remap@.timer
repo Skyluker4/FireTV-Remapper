@@ -1,0 +1,10 @@
+[Unit]
+Description=Make sure Amazon Home Screen Override is installed and activated
+
+[Timer]
+OnCalendar=hourly
+Persistent=true
+
+[Install]
+WantedBy=timers.target
+

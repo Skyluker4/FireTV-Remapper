@@ -1,0 +1,33 @@
+#!/bin/sh
+
+DEVICE="${1:-$DEVICE}"
+
+LOCAL_FILES_PATH="/usr/local/share/firetv-remap/"
+
+START_ME_PATH="${LOCAL_FILES_PATH}/start-me.sh"
+WATCH_HOME_PATH="${LOCAL_FILES_PATH}/watch-home.sh"
+WATCH_POWER_PATH="${LOCAL_FILES_PATH}/watch-power.sh"
+
+DEVICE_DESTINATION_DIRECTORY="/data/local/tmp/"
+
+START_ME_DEVICE_PATH="${DEVICE_DESTINATION_DIRECTORY}/0"
+WATCH_HOME_DEVICE_PATH="${DEVICE_DESTINATION_DIRECTORY}/1"
+WATCH_POWER_DEVICE_PATH="${DEVICE_DESTINATION_DIRECTORY}/2"
+
+adb connect "${DEVICE}"
+
+if ! adb shell "test -e ${START_ME_DEVICE_PATH}"; then
+	adb push "${START_ME_PATH}" "${START_ME_DEVICE_PATH}"
+fi
+
+if ! adb shell "test -e ${WATCH_HOME_DEVICE_PATH}"; then
+	adb push "${WATCH_HOME_PATH}" "${WATCH_HOME_DEVICE_PATH}"
+fi
+
+if ! adb shell "test -e ${WATCH_POWER_DEVICE_PATH}"; then
+	adb push "${WATCH_POWER_PATH}" "${WATCH_POWER_DEVICE_PATH}"
+fi
+
+adb shell sh "${START_ME_DEVICE_PATH}"
+
+adb kill-server

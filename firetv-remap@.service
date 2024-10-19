@@ -1,0 +1,12 @@
+[Unit]
+Description=Override Amazon Home Screen with FLauncher locally
+After=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/bin/firetv-activate-remap %i
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
