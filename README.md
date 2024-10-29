@@ -2,7 +2,7 @@
 
 Pushes files to FireTV to remap home button and power to a custom launcher. Needs to be run on every reboot of the FireTV.
 
-Based on [this]([https://forum.xda-developers.com/fire-tv/general/remap-home-button-to-launcher-t3130507) XDA thread.
+Based on [this](https://xdaforums.com/t/workaround-to-remap-home-key.4527599/post-89683403) XDA thread.
 
 ## Usage
 
